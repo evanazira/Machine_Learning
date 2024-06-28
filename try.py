@@ -311,7 +311,7 @@ for num in perfect_numbers:
 #while count<4:
   #  primetest = (2**num) - 1
 
-
+'''
 count = 0
 num=2 #testlist for primenum
 
@@ -341,3 +341,142 @@ while(count< 4):
     num += 1
 
 
+def convert_to_words(num):  
+    if num == 0:  
+        return "zero"  
+    ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]  
+    tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]  
+    teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]  
+    words = ""  
+    if num>= 1000:  
+        words += ones[num // 1000] + " thousand "  
+        num %= 1000  
+    if num>= 100:  
+        words += ones[num // 100] + " hundred "  
+        num %= 100  
+    if num>= 10 and num<= 19:  
+        words += teens[num - 10] + " "  
+        num = 0  
+    elif (num>= 20):  
+        words += tens[num // 10] + " "  
+        num %= 10  
+    if num>= 1 and num<= 9:  
+        words += ones[num] + " "  
+    return words.strip()  
+num = int(input("Enter a number"))  
+words = convert_to_words(num)  
+print(words)   '''
+# Python program to convert Roman Numerals
+# to Numbers
+
+# This function returns value of each Roman symbol
+'''
+
+def value(r):
+    if (r == 'I'):
+        return 1
+    if (r == 'V'):
+        return 5
+    if (r == 'X'):
+        return 10
+    if (r == 'L'):
+        return 50
+    if (r == 'C'):
+        return 100
+    if (r == 'D'):
+        return 500
+    if (r == 'M'):
+        return 1000
+    return -1
+
+
+def romanToDecimal(str):
+    res = 0
+    i = 0
+
+    while (i < len(str)):
+
+        # Getting value of symbol s[i]
+        s1 = value(str[i])
+
+        if (i + 1 < len(str)):
+
+            # Getting value of symbol s[i + 1]
+            s2 = value(str[i + 1])
+
+            # Comparing both values
+            if (s1 >= s2):
+
+                # Value of current symbol is greater
+                # or equal to the next symbol
+                res = res + s1
+                i = i + 1
+            else:
+
+                # Value of current symbol is greater
+                # or equal to the next symbol
+                res = res + s2 - s1
+                i = i + 2
+        else:
+            res = res + s1
+            i = i + 1
+
+    return res
+
+
+# Driver code
+print("Integer form of Roman Numeral is"),
+print(romanToDecimal("MCMIV"))
+
+def intToRoman(num):
+    thousands = ["", "M", "MM", "MMM"]
+    hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+    tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+    units = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+    
+    return (thousands[num // 1000] +
+            hundreds[(num % 1000) // 100] +
+            tens[(num % 100) // 10] +
+            units[num % 10])
+
+# Example usage:
+print(intToRoman(3549)) 
+
+
+'''
+
+
+
+
+
+def compression(string): 
+    hash = {}
+    list = []
+    count = 0
+    for i in range(len(string) - 1): 
+        if string[i - 1] != string[i] or i == 0: 
+            if string[i] != string[i + 1] or i == len(string) - 2: 
+                count = count + 1
+                list.append(str(string[i]))
+                list.append(str(count))
+                count = 0
+            elif string[i] == string[i + 1]: 
+                count = count + 1
+        elif string[i - 1] == string[i]:
+            if string[i] != string[i + 1] or i == len(string) - 2: 
+                count = count + 1
+                list.append(str(string[i]))
+                list.append(str(count))
+                count = 0
+            if string[i] == string[i + 1]: 
+                count = count + 1
+        #print(list)
+    result =  "".join(list)
+    for item in list:
+        result += item
+    if len(result) == len(string): 
+        return string
+    else: 
+        return result
+string = input("Enter: ")
+print(compression(string))
