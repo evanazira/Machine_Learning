@@ -1,0 +1,2 @@
+patient|gender|age|dr|department
+Ahmad|Male|30|Dr Muruthu|NS
