@@ -1,0 +1,21 @@
+[
+    {
+        "product": "Tv",
+        "quantity": 10,
+        "price": 1455.55,
+        "authors":{
+            "main": "John",
+            "coauthor": "David"
+        }
+    },
+    {
+        "product": "computer",
+        "quantity": 20,
+        "price": 106.20,
+        "authors":{
+            "main": "Eve",
+            "coauthor": "Abrahm"
+        }
+    }
+    
+]
